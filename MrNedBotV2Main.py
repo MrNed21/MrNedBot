@@ -80,4 +80,4 @@ for filename in os.listdir('./catagories'):
         client.load_extension(f'catagories.{filename[:-3]}')
     
 #runs_the_bot
-client.run('NjYwMjY1MzUzMjM0MDg3OTM2.XpOX1A.mM0tfIDtxHtWeGxShDpT4xM-7PI')
+client.run('no mark you cannot')
