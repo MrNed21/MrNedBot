@@ -59,5 +59,5 @@ for filename in os.listdir('bot/cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 print()
-
-client.run('NjYwMjY1MzUzMjM0MDg3OTM2.XgaWBw.Wj3LjoWZofp04t5rOMM9AvmD7Z8')
+TOKEN = os.getenv("DISCORD_TOKEN")
+client.run(TOKEN)
