@@ -1,0 +1,3 @@
+@client.event
+async def on_message(message):
+  await message.author.send(message.author.mention)
