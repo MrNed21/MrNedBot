@@ -6,7 +6,5 @@ flask
 python-dotenv
 PyNaCl
 dnspython
-os
-random
 time
 datetime
