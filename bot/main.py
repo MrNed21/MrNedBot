@@ -53,7 +53,7 @@ async def on_ready():
     change_status.start()
 
 print('Cogs Loaded:')
-for filename in os.listdir('./cogs'):
+for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
         print(f'{filename[:-3]}')
         client.load_extension(f'cogs.{filename[:-3]}')
