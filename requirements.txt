@@ -6,5 +6,4 @@ flask
 python-dotenv
 PyNaCl
 dnspython
-time
 datetime
