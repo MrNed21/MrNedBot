@@ -7,65 +7,19 @@ class Help(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
-    async def help(self, ctx, mapping, thing='catagories'):
-        '''Sends this message'''
-        if thing == 'catagories':  # send all catagories
-            embed = discord.Embed(
-                title="Help", description="list of Catagories")
+    commands.command()
+    async def help(self, mapping):
+        embed = discord.Embed(title="Help")
+        for cog, commands in mapping.items():
+           command_signatures = [
+               self.get_command_signature(c) for c in commands]
+           if command_signatures:
+               cog_name = getattr(cog, "qualified_name", "No Category")
+               embed.add_field(name=cog_name, value="\n".join(
+                    command_signatures), inline=False)
 
-            for cog in self.client.cogs:
-                embed.add_field(
-                    name=cog, value=f'`ned help {cog}`', inline=False)
-
-            embed.set_footer(
-                text="For specific parameters try ned help [command/catagory]")
-
-        elif thing == 'commands':  # get all the commands and send them
-            embed = discord.Embed(
-                title='Help', description='list of Commands'
-                )
-
-            for c in self.client.commands:
-                embed.add_field(name=c.name, value=c.help, inline=False)
-
-        else:
-
-            if thing in self.client.cogs:  # get all commands under name of catagory
-                kog = self.client.get_cog(thing)
-                commands = kog.get_commands()
-                embed = discord.Embed(
-                    title='Help', description=thing+' commands'
-                )
-
-                for c in commands:
-                    embed.add_field(name=c,
-                                    value=c.help, inline=False)
-
-            else:
-                for cog in self.client.cogs():
-                    if thing == cog.name:
-                        embed = discord.Embed(
-                            title='Help', description=c.name
-                        )
-
-                        embed.add_field(
-                            name='Aliases: ', value=c.aliases, inline=False
-                        )
-
-                        embed.add_field(name='Description: ',
-                                        value=c.help, inline=False)
-
-                        for command in mapping.items():
-                            command_signatures = [self.get_command_signature(c) for c in commands]
-                            if command_signatures:
-                                embed.add_field(
-                            name='Usage: ', value=self.client.get_command_signature(c), inline=False)
-
-        embed.set_thumbnail(
-            url="http://clipartmag.com/images/scroll-png-25.png")
-
-        await ctx.send(embed=embed)
+        channel = self.get_destination()
+        await channel.send(embed=embed)
 
 
 def setup(client):
