@@ -43,12 +43,13 @@ class Help(commands.Cog):
                                     value=c.help, inline=False)
 
             else:
-                commands=[]
+                commands = []
                 for x in self.client.cogs:
                     kog = self.client.get_cog(x)
                     for c in kog.get_commands():
-                        commands+=c
+                        commands += c
 
+                await ctx.send(commands)
                 if thing in commands:
                     embed = discord.Embed(
                         title='Help', description=thing
