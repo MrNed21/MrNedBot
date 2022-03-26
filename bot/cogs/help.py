@@ -48,12 +48,17 @@ class Help(commands.Cog):
                         embed = discord.Embed(
                             title='Help', description=c.name
                         )
+
                         embed.add_field(
-                            name='Name: ', value=c.name, inline=False)
+                            name='Aliases: ',value=c.aliases, inline=False
+                        )
+                        
                         embed.add_field(name='Description: ',
                                         value=c.help, inline=False)
+
+
                         embed.add_field(
-                            name='Usage: ', value=c.usage, inline=False)
+                            name='Usage: ', value=c.callback, inline=False)
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
