@@ -24,6 +24,18 @@ class MyHelp(commands.HelpCommand):
                 text="For specific parameters try ned help [command/catagory]")
         await channel.send(embed=embed)
 
+    async def send_cog_help(self, cog):
+        embed = discord.Embed(
+            title=f"Help: {cog}", color=0x00b3ff)
+        for x in cog.commands:
+            embed.add_field(name=x, value=f'ned help {x}', inline=False)
+        channel = self.get_destination()
+        embed.set_thumbnail(
+            url="http://clipartmag.com/images/scroll-png-25.png")
+        embed.set_footer(
+                text="For specific parameters try ned help [command/catagory]")
+        await channel.send(embed=embed)
+
     async def send_command_help(self, command):
         embed = discord.Embed(
             title=f"Help: {command}", color=0x00b3ff)
