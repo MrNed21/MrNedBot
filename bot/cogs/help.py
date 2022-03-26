@@ -30,6 +30,7 @@ class Help(commands.Cog):
                 embed.add_field(name=c.name, value=c.help, inline=False)
 
         else:
+
             if thing in self.client.cogs:  # get all commands under name of catagory
                 kog = self.client.get_cog(thing)
                 commands = kog.get_commands()
@@ -42,11 +43,19 @@ class Help(commands.Cog):
                                     value=c.help, inline=False)
 
 
-            elif thing in self.client.walk_commands():
-                embed = discord.Embed(
-                    title='Help', description=thing
-                )
-                embed.add_field(name=thing,value=thing.usage)
+            else:
+                for x in self.client.cogs:
+                    kog=self.client.get_cog(x)
+                    commands+=kog.get_commands()
+
+                if thing in commands:
+                    embed = discord.Embed(
+                        title='Help', description=thing
+                    )
+                    embed.add_field(name='Name: ',value=thing,inline=False)
+                    embed.add_field(name='Description: ',value=thing.help,inline=False)
+                    embed.add_field(name='Usage: ',value=thing.usage,inline=False)
+
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
