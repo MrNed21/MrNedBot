@@ -43,21 +43,21 @@ class Help(commands.Cog):
                                     value=c.help, inline=False)
 
             else:
-                for a in self.client.commands:
-                    if thing == a.name:
+                for c in self.client.commands:
+                    if thing == c.name:
                         embed = discord.Embed(
-                            title='Help', description=a.name
+                            title='Help', description=c.name
                         )
 
                         embed.add_field(
-                            name='Aliases: ', value=a.aliases, inline=False
+                            name='Aliases: ', value=c.aliases, inline=False
                         )
 
                         embed.add_field(name='Description: ',
-                                        value=a.help, inline=False)
+                                        value=c.help, inline=False)
 
                         embed.add_field(
-                            name='Usage: ', value=a.get_command_signature(c), inline=False)
+                            name='Usage: ', value=self.get_command_signature(c), inline=False)
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
