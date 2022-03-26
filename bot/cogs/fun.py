@@ -4,7 +4,7 @@ from discord.ext import commands
 from random import randint, choice
 
 
-class RNG(commands.Cog):
+class fun(commands.Cog):
 
     def __init__(self, client):
         self.client = client
@@ -118,4 +118,4 @@ class RNG(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(RNG(client))
+    client.add_cog(fun(client))
