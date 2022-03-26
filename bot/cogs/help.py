@@ -24,7 +24,7 @@ class MyHelp(commands.HelpCommand):
                 text="For specific parameters try ned help [command/catagory]")
         await channel.send(embed=embed)
 
-    async def send_cog_help(self, cog):
+    async def send_cog_help(self, ctx, cog):
         embed = discord.Embed(
             title=f"Help: {cog}", color=0x00b3ff)
         for x in cog.commands:
