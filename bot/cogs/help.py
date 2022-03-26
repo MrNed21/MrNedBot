@@ -43,16 +43,17 @@ class Help(commands.Cog):
                                     value=c.help, inline=False)
 
             else:
-
-                if thing in self.client.commands.name:
-                    embed = discord.Embed(
-                        title='Help', description=thing.name
-                    )
-                    embed.add_field(name='Name: ', value=thing.name, inline=False)
-                    embed.add_field(name='Description: ',
-                                    value=thing.help, inline=False)
-                    embed.add_field(
-                        name='Usage: ', value=thing.usage, inline=False)
+                for c in self.client.commands:
+                    if thing == c.name:
+                        embed = discord.Embed(
+                            title='Help', description=thing.name
+                        )
+                        embed.add_field(
+                            name='Name: ', value=thing.name, inline=False)
+                        embed.add_field(name='Description: ',
+                                        value=thing.help, inline=False)
+                        embed.add_field(
+                            name='Usage: ', value=thing.usage, inline=False)
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
