@@ -6,7 +6,7 @@ class MyHelp(commands.HelpCommand):
     def get_command_signature(self, command):
         return '%s%s %s' % (self.clean_prefix, command.qualified_name, command.signature)
 
-    async def send_bot_help(self, ):
+    async def send_bot_help(self):
         embed = discord.Embed(title="Help", color=0x00b3ff)
         for cog in self.client.cogs:
             embed.add_field(
@@ -21,8 +21,9 @@ class MyHelp(commands.HelpCommand):
 
     async def send_command_help(self, command):
         embed = discord.Embed(
-            title="Help",description=command, color=0x00b3ff)
-        embed.add_field(name='Usage', value=self.get_command_signature(command))
+            title="Help", description=command, color=0x00b3ff)
+        embed.add_field(
+            name='Usage', value=self.get_command_signature(command))
         embed.add_field(name="Description", value=command.help)
         alias = command.aliases
         if alias:
