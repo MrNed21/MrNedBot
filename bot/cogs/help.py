@@ -10,10 +10,12 @@ class MyHelp(commands.HelpCommand):
         embed = discord.Embed(title="Help", color=0x00b3ff)
         for cog, commands in mapping.items():
            filtered = await self.filter_commands(commands, sort=True)
-           command_signatures = [self.get_command_signature(c) for c in filtered]
+           command_signatures = [
+               self.get_command_signature(c) for c in filtered]
            if command_signatures:
-                cog_name = getattr(cog, "qualified_name", "No Category")
-                embed.add_field(name=cog_name, value="\n".join(command_signatures), inline=False)
+               cog_name = getattr(cog, "qualified_name", "No Category")
+               embed.add_field(
+                   name=cog_name, value=f'ned help {cog_name}', inline=False)
 
         channel = self.get_destination()
         embed.set_thumbnail(
@@ -24,7 +26,7 @@ class MyHelp(commands.HelpCommand):
 
     async def send_command_help(self, command):
         embed = discord.Embed(
-            title="Help", description=command, color=0x00b3ff)
+            title=f"Help: {command}", color=0x00b3ff)
         embed.add_field(
             name='Usage', value=self.get_command_signature(command))
         embed.add_field(name="Description", value=command.help)
