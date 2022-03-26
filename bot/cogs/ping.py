@@ -3,7 +3,7 @@ from discord.ext import commands
 import time
 
 
-class Ping(commands.Cog):
+class ping(commands.Cog):
     """Sends the help message"""
 
     def __init__(self, client):
@@ -23,4 +23,4 @@ class Ping(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Ping(client))
+    client.add_cog(ping(client))
