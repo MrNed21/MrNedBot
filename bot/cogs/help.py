@@ -45,16 +45,15 @@ class Help(commands.Cog):
             else:
                 for c in self.client.commands:
                     if thing == c.name:
-                        thing = c
                         embed = discord.Embed(
-                            title='Help', description=thing.name
+                            title='Help', description=c.name
                         )
                         embed.add_field(
-                            name='Name: ', value=thing.name, inline=False)
+                            name='Name: ', value=c.name, inline=False)
                         embed.add_field(name='Description: ',
-                                        value=thing.help, inline=False)
+                                        value=c.help, inline=False)
                         embed.add_field(
-                            name='Usage: ', value=thing.usage, inline=False)
+                            name='Usage: ', value=c.usage, inline=False)
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
