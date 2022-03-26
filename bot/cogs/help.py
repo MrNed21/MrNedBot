@@ -43,17 +43,12 @@ class Help(commands.Cog):
                                     value=c.help, inline=False)
 
             else:
-                commands = []
-                for x in self.client.cogs:
-                    kog = self.client.get_cog(x)
-                    for c in kog.get_commands():
-                        commands += c.name
 
-                if thing in commands:
+                if thing in self.client.commands.name:
                     embed = discord.Embed(
-                        title='Help', description=thing
+                        title='Help', description=thing.name
                     )
-                    embed.add_field(name='Name: ', value=thing, inline=False)
+                    embed.add_field(name='Name: ', value=thing.name, inline=False)
                     embed.add_field(name='Description: ',
                                     value=thing.help, inline=False)
                     embed.add_field(
