@@ -15,9 +15,12 @@ intents.members = True
 
 client = commands.Bot(command_prefix='ned ',
                       intents=intents)
-client.remove_command('help')
-
-
+#client.remove_command('help')
+class MyHelp(commands.HelpCommand):
+    async def send_bot_help(self, mapping):
+        channel = self.get_destination()
+        await channel.send("hello!")
+        
 @tasks.loop()
 async def change_status():
     """This runs the task to loop these things in the status on discord"""
