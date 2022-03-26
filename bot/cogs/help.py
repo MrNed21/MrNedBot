@@ -8,7 +8,7 @@ class Help(commands.Cog):
         self.client = client
 
     @commands.command()
-    async def help(self, ctx,  thing='catagories'):
+    async def help(self, ctx, mapping, thing='catagories'):
         '''Sends this message'''
         if thing == 'catagories':  # send all catagories
             embed = discord.Embed(
@@ -43,8 +43,8 @@ class Help(commands.Cog):
                                     value=c.help, inline=False)
 
             else:
-                for c in self.client.commands:
-                    if thing == c.name:
+                for cog in self.client.cogs():
+                    if thing == cog.name:
                         embed = discord.Embed(
                             title='Help', description=c.name
                         )
@@ -56,7 +56,10 @@ class Help(commands.Cog):
                         embed.add_field(name='Description: ',
                                         value=c.help, inline=False)
 
-                        embed.add_field(
+                        for command in mapping.items():
+                            command_signatures = [self.get_command_signature(c) for c in commands]
+                            if command_signatures:
+                                embed.add_field(
                             name='Usage: ', value=self.client.get_command_signature(c), inline=False)
 
         embed.set_thumbnail(
