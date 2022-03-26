@@ -3,14 +3,14 @@ from discord.ext import commands
 import discord.utils
 
 
-class Dev(commands.Cog):
+class developer(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
     @commands.command()
     async def whois(self, ctx, target: discord.Member):
-        '''literally spyware // api scrapper'''
+        '''literally spyware / api scrapper'''
         embed = discord.Embed(
             title=target,
             color=0x00cc3d
@@ -45,4 +45,4 @@ class Dev(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Dev(client))
+    client.add_cog(developer(client))
