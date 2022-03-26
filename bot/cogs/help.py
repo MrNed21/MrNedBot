@@ -45,6 +45,7 @@ class Help(commands.Cog):
             else:
                 for c in self.client.commands:
                     if thing == c.name:
+                        thing = c
                         embed = discord.Embed(
                             title='Help', description=thing.name
                         )
