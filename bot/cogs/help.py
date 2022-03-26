@@ -57,7 +57,7 @@ class Help(commands.Cog):
                                         value=c.help, inline=False)
 
                         embed.add_field(
-                            name='Usage: ', value=self.get_command_signature(c), inline=False)
+                            name='Usage: ', value=self.client.get_command_signature(c), inline=False)
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
