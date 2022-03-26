@@ -7,7 +7,7 @@ class Help(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    commands.command()
+    @commands.command()
     async def help(self, mapping):
         embed = discord.Embed(title="Help")
         for cog, commands in mapping.items():
