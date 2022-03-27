@@ -67,11 +67,12 @@ class help(commands.Cog):
     @commands.command()
     async def help(self, ctx, input='catagories'):
         '''shows this message. duh.'''
-        print(self.client.commands)
         #synonyms for the things
-        commands = ['commands']
         catagories = ['catagories', 'cogs', 'modules']
-
+        commands = []
+        for cog in self.client.cogs:
+            for command in cog.get_commands():
+                commands += command
         #DISPLAY ALL COGS
         if input in catagories:
             embed = discord.Embed(
@@ -82,7 +83,7 @@ class help(commands.Cog):
                     name=cog, value=f'`{prefix}help {cog}`', inline=False)
 
         #DISPLAY ALL COMMANDS
-        elif input in commands:
+        elif input == 'commands':
             embed = discord.Embed(
                 title="Help", description="List of Commands", color=embed_color)
 
@@ -99,7 +100,7 @@ class help(commands.Cog):
             for command in cog.get_commands():
                 embed.add_field(name=command, value=command.help, inline=False)
         #GET DETAILS FROM COMMAND
-        elif input in self.client.walk_commands():
+        elif input in commands():
             embed = discord.Embed(
                 title="Help", description=f"{input}", color=embed_color)
 
