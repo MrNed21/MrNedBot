@@ -13,7 +13,7 @@ class MyHelp(commands.HelpCommand):
     # !help
     async def send_bot_help(self, mapping):
         embed = discord.Embed(title="Help",
-                              description='List of Commands',
+                              description='List of Catagories',
                               color=embed_color)
         for cog, commands in mapping.items():
             command_signatures = [
