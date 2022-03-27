@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import discord.utils
+import time
 
 
 class developer(commands.Cog):
@@ -41,6 +42,18 @@ class developer(commands.Cog):
         embed.add_field(name='Roles', value=target.roles)
         embed.add_field(name='System', value=target.system)
         embed.add_field(name='Voice', value=target.voice)
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def ping(self, ctx):
+        '''Check the latency of the bot'''
+        start = time.perf_counter()
+        await ctx.trigger_typing()
+        end = time.perf_counter()
+        ping = round((end-start)*1000)
+        embed = discord.Embed(title="Ping:", description=ping)
+        embed.set_thumbnail(
+            url="http://cliparts.co/cliparts/8c6/ozR/8c6ozRoxi.png")
         await ctx.send(embed=embed)
 
 
