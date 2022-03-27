@@ -22,7 +22,7 @@ class MyHelp(commands.HelpCommand):
                 cog_name = getattr(cog, "qualified_name", "No Category")
                 if cog_name != 'No Category':
                     embed.add_field(name=cog_name,
-                                    value=f'{prefix}{cog_name}',
+                                    value=f'{prefix}help {cog_name}',
                                     inline=False)
 
         embed.set_thumbnail(
