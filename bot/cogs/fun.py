@@ -4,14 +4,14 @@ from discord.ext import commands
 from random import randint, choice
 
 
-class fun(commands.Cog):
+class fun(commands.Cog, description='funny, random, troll your friends sort of things'):
 
     def __init__(self, client):
         self.client = client
 
     @commands.command(aliases=['8ball'])
     async def eightball(self, ctx, *, question):
-        "Magic 8ball style command"
+        "Magic 8ball"
         responses = ["It is certain.",
                      "It is decidedly so.",
                      "Without a doubt.",
@@ -47,22 +47,17 @@ class fun(commands.Cog):
 
     #dice roll
     @ commands.command()
-    async def roll(self, ctx, dice: str):
-        """Rolls a dice in NdN format."""
+    async def roll(self, ctx, sides, rolls):
+        """Rolls dice?"""
 
-        try:
-            rolls, limit = map(int, dice.split('d'))
-        except Exception:
-            await ctx.send('Format has to be in NdN!')
-            return
         embed = discord.Embed(
             title='Dice roll',
-            description=f'Rolling {rolls} {limit} sided dice.',
+            description=f'Rolling {sides} {rolls} sided dice.',
             color=0xffffff
         )
         embed.set_thumbnail(
             url='https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fih0.redbubble.net%2Fimage.118255989.1065%2Fsticker%2C375x360.u5.png&f=1&nofb=1')
-        result = ', '.join(str(randint(1, limit)) for r in range(rolls))
+        result = ', '.join(str(randint(1, sides)) for r in range(rolls))
         embed.add_field(name='Result:', value=result)
         await ctx.send(embed=embed)
 
@@ -76,14 +71,14 @@ class fun(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def yelp(self, ctx, *, review):
-        "yelp review"
+    async def yelp(self, ctx, *, reviewed):
+        "yelp review someone"
         stars = ''
         score = randint(1, 5)
         for x in range(score):
             stars = stars+':stars:'
         embed = discord.Embed(
-            title=review+':', description=f'Stars: {stars}', color=0xff0000
+            title=reviewed+':', description=f'Stars: {stars}', color=0xff0000
         )
         embed.set_thumbnail(
             url='https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fsearchengineland.com%2Ffigz%2Fwp-content%2Fseloads%2F2012%2F08%2FScreen-Shot-2012-08-01-at-1.32.34-PM.png&f=1&nofb=1')

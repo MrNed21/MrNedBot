@@ -2,8 +2,7 @@ import discord
 from discord.ext import commands
 
 
-class science(commands.Cog):
-    """Sends the help message"""
+class science(commands.Cog, description='i dont actually know what to add here'):
 
     def __init__(self, client):
         self.client = client

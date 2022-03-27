@@ -8,8 +8,7 @@ for x in data:
     nfts.append(x)
 
 
-class crypto(commands.Cog):
-    """Sends the help message"""
+class crypto(commands.Cog, description='fucking monkey nfts'):
 
     def __init__(self, client):
         self.client = client

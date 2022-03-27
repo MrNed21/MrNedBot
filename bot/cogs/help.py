@@ -20,10 +20,10 @@ class MyHelp(commands.HelpCommand):
                 self.get_command_signature(c) for c in commands]
             if command_signatures:
                 cog_name = getattr(cog, "qualified_name", "No Category")
-                cog_description = getattr(cog, "description", "No Category")
+
                 if cog_name != 'No Category':
                     embed.add_field(name=cog_name,
-                                    value=cog_description,
+                                    value=cog.description,
                                     inline=False)
 
         embed.set_thumbnail(
@@ -83,7 +83,7 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 
 
-class help(commands.Cog):
+class help(commands.Cog, description='sends the help command'):
     def __init__(self, client):
         self.client = client
         # Setting the cog for the help

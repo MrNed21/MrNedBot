@@ -4,7 +4,7 @@ import discord.utils
 import time
 
 
-class developer(commands.Cog):
+class developer(commands.Cog, description='developer command'):
 
     def __init__(self, client):
         self.client = client
