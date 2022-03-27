@@ -9,6 +9,7 @@ def igpay_atinlay(word):
 
 
 def pig_latin(sentence):
+    sentence = str(sentence)
     new_sentence = ''
     a = 0
     while sentence[a] != ' ':
