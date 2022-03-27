@@ -45,10 +45,10 @@ class MyHelp(commands.HelpCommand):
         embed.add_field(name='Desription',
                         value=command.help,
                         inline=False)
-
-        embed.add_field(name='Aliases',
-                        value=command.aliases,
-                        inline=False)
+        if command.aliases:
+            embed.add_field(name='Aliases',
+                            value=command.aliases,
+                            inline=False)
 
         embed.set_thumbnail(
             url="http://clipartmag.com/images/scroll-png-25.png")
@@ -57,14 +57,29 @@ class MyHelp(commands.HelpCommand):
 
         channel = self.get_destination()
         await channel.send(embed=embed)
-        
+
    # !help <group>
     async def send_group_help(self, group):
-        await self.context.send("This is help group")
+        pass
 
    # !help <cog>
     async def send_cog_help(self, cog):
-        await self.context.send("This is help cog")
+        embed = discord.Embed(title="Help",
+                              value=f"{cog}, detailed.",
+                              color=embed_color)
+
+        for command in cog.walk_commands():
+            embed.add_field(name=command,
+                            value=f'{prefix}{command}',
+                            inline=False)
+
+        embed.set_thumbnail(
+            url="http://clipartmag.com/images/scroll-png-25.png")
+        embed.set_footer(
+            text=f"For specific parameters try {prefix}help [command/catagory]")
+
+        channel = self.get_destination()
+        await channel.send(embed=embed)
 
 
 class help(commands.Cog):
