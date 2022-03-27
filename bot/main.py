@@ -13,7 +13,25 @@ current_time = now.strftime("%H:%M:%S")
 intents = discord.Intents.default()
 intents.members = True
 
-client = commands.Bot(command_prefix='ned ',
+
+def mixedCase(*args):
+  """
+  Gets all the mixed case combinations of a string
+
+  This function is for in-case sensitive prefixes
+  """
+  total = []
+  import itertools
+  for string in args:
+    a = map(''.join, itertools.product(
+      *((c.upper(), c.lower()) for c in string)))
+    for x in list(a):
+      total.append(x)
+
+  return list(total)
+
+
+client = commands.Bot(case_insensitive=True, command_prefix=mixedCase('ned '),
                       intents=intents)
 client.remove_command('help')
 
