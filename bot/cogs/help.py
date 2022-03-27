@@ -66,7 +66,7 @@ class MyHelp(commands.HelpCommand):
    # !help <cog>
     async def send_cog_help(self, cog):
         embed = discord.Embed(title="Help",
-                              description=f"{cog}, detailed.",
+                              description=f"{cog.qualified_name}, detailed.",
                               color=embed_color)
 
         for command in cog.walk_commands():
