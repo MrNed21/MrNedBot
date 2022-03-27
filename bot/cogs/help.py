@@ -47,7 +47,6 @@ class help(commands.Cog):
                 embed.add_field(name=command, value=command.help, inline=False)
         #GET DETAILS FROM COMMAND
         elif input in commands:
-            input = self.client.get_command(input)
             embed = discord.Embed(
                 title="Help", description=f"{input}", color=embed_color)
 
