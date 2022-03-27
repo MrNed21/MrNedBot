@@ -20,9 +20,10 @@ class MyHelp(commands.HelpCommand):
                 self.get_command_signature(c) for c in commands]
             if command_signatures:
                 cog_name = getattr(cog, "qualified_name", "No Category")
+                cog_description = getattr(cog, "description", "No Category")
                 if cog_name != 'No Category':
                     embed.add_field(name=cog_name,
-                                    value=f'{prefix}help {cog_name}',
+                                    value=cog_description,
                                     inline=False)
 
         embed.set_thumbnail(
