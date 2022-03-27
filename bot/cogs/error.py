@@ -11,9 +11,9 @@ class error(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
-        ctx.send(embed=self.send_error(ctx, error))
+        await ctx.send(embed=self.embed_error(ctx, error))
 
-    def send_error(self, ctx, error):
+    def embed_error(self, ctx, error):
         embed = discord.Embed(title="Oh No! An error occured!",
                               description=error, color=0xff0000)
         embed.set_thumbnail(
