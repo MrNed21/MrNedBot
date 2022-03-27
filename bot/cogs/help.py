@@ -92,12 +92,12 @@ class help(commands.Cog):
 
         #DISPLAY ALL COMMANDS UNDER CATAGORY
         elif input in self.client.cogs:
-            cog=self.client.get_cog(input)
+            cog = self.client.get_cog(input)
             embed = discord.Embed(
                 title="Help", description=f"Detail of {input}", color=embed_color)
 
             for command in cog.get_commands():
-                embed.add_field(name=command,value=command.help,inline=False)
+                embed.add_field(name=command, value=command.help, inline=False)
         #GET DETAILS FROM COMMAND
         elif input in self.client.commands:
             embed = discord.Embed(
@@ -120,7 +120,7 @@ class help(commands.Cog):
             url="http://clipartmag.com/images/scroll-png-25.png")
         embed.set_footer(
                 text=f"For specific parameters try {prefix}help [command/catagory]")
-        ctx.send(embed=embed)
+        await ctx.send(embed=embed)
 
 #https://gist.github.com/InterStella0/b78488fb28cadf279dfd3164b9f0cf96#start1
 #dude i legit could not do this without this tutorial bruhh
