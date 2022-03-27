@@ -75,7 +75,7 @@ class help(commands.Cog):
         #DISPLAY ALL COGS
         if input in catagories:
             embed = discord.Embed(
-                title="Help", description="list of Catagories", color=embed_color)
+                title="Help", description="List of Catagories", color=embed_color)
 
             for cog in self.client.cogs:
                 embed.add_field(
@@ -84,7 +84,7 @@ class help(commands.Cog):
         #DISPLAY ALL COMMANDS
         elif input in commands:
             embed = discord.Embed(
-                title="Help", description="list of Commands", color=embed_color)
+                title="Help", description="List of Commands", color=embed_color)
 
             for cog in self.client.cogs:
                 embed.add_field(
@@ -94,14 +94,14 @@ class help(commands.Cog):
         elif input in self.client.cogs:
             cog = self.client.get_cog(input)
             embed = discord.Embed(
-                title="Help", description=f"Detail of {input}", color=embed_color)
+                title="Help", description=f"{input}", color=embed_color)
 
             for command in cog.get_commands():
                 embed.add_field(name=command, value=command.help, inline=False)
         #GET DETAILS FROM COMMAND
-        elif input in self.client.commands:
+        elif input in self.client.walk_commands:
             embed = discord.Embed(
-                title="Help", description=f"Detail of {input}", color=embed_color)
+                title="Help", description=f"{input}", color=embed_color)
 
             usage = f'{prefix}{input}{input.usage}'
             if input.usage == None:
