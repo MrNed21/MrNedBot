@@ -58,4 +58,4 @@ class developer(commands.Cog, description='developer command'):
 
 
 def setup(client):
-    client.add_cog(developer(client), description='devloper commands')
+    client.add_cog(developer(client))
