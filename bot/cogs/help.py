@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from error import embed_error
+from error_message import embed_error
 
 
 prefix = 'ned '
