@@ -81,7 +81,7 @@ class help(commands.Cog):
                 embed.add_field(
                     name=cog, value=f'`{prefix}help {cog}`', inline=False)
 
-        #DISPLAY ALL COMMANDS UNDER CATAGORY
+        #DISPLAY ALL COMMANDS
         elif input in commands:
             embed = discord.Embed(
                 title="Help", description="list of Commands", color=embed_color)
@@ -90,6 +90,14 @@ class help(commands.Cog):
                 embed.add_field(
                     name=cog, value=', '.join(cog.commands), inline=False)
 
+        #DISPLAY ALL COMMANDS UNDER CATAGORY
+        elif input in self.client.cogs:
+            cog=self.client.get_cog(input)
+            embed = discord.Embed(
+                title="Help", description=f"Detail of {input}", color=embed_color)
+
+            for command in cog.get_commands():
+                embed.add_field(name=command,value=command.help,inline=False)
         #GET DETAILS FROM COMMAND
         elif input in self.client.commands:
             embed = discord.Embed(
@@ -103,7 +111,7 @@ class help(commands.Cog):
                             value=usage, inline=False)
             embed.add_field(name='Aliases',
                             value=input.aliases, inline=False
-                        )
+                            )
 
             embed.add_field(name='Description',
                             value=input.help, inline=False)
