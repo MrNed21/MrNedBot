@@ -1,7 +1,5 @@
 import discord
 from discord.ext import commands
-from error_message import embed_error
-
 
 prefix = 'ned '
 embed_color = 0x00b3ff
@@ -85,8 +83,12 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 
     async def send_error_message(self, error):
+        embed = discord.Embed(title="Oh No! An error occured!",
+                              description=error, color=0xff0000)
+        embed.set_thumbnail(
+            url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Fdisassemble-clipart-15.jpg&f=1&nofb=1")
         channel = self.get_destination()
-        await channel.send(embed=embed_error)
+        await channel.send(embed=embed)
 
 
 class help(commands.Cog, description='sends the help command'):
