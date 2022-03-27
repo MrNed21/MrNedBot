@@ -67,7 +67,8 @@ class help(commands.Cog):
     @commands.command()
     async def help(self, ctx, input='catagories'):
         '''shows this message. duh.'''
-        print(self.client.walk_commands())
+        print(self.client.commands())
+        print(self.client.commands)
         #synonyms for the things
         commands = ['commands']
         catagories = ['catagories', 'cogs', 'modules']
