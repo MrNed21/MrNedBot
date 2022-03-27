@@ -1,13 +1,13 @@
 import discord
 from discord.ext import commands
 
-
 prefix = 'ned '
 embed_color = 0x00b3ff
 
 
 class MyHelp(commands.HelpCommand):
     def get_command_signature(self, command):
+        # the prefix, name, how to use it (arguements)
         return '%s%s %s' % (self.clean_prefix, command.qualified_name, command.signature)
 
     # !help
