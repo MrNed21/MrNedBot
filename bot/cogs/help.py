@@ -7,26 +7,57 @@ embed_color = 0x00b3ff
 
 
 class MyHelp(commands.HelpCommand):
-   # !help
+    def get_command_signature(self, command):
+        return '%s%s %s' % (self.clean_prefix, command.qualified_name, command.signature)
+
+    # !help
     async def send_bot_help(self, mapping):
         embed = discord.Embed(title="Help",
                               description='List of Commands',
                               color=embed_color)
         for cog, commands in mapping.items():
-            command_signatures = [self.get_command_signature(c) for c in commands]
+            command_signatures = [
+                self.get_command_signature(c) for c in commands]
             if command_signatures:
                 cog_name = getattr(cog, "qualified_name", "No Category")
-                embed.add_field(name=cog_name,
-                                value=f'{prefix}{cog_name}',
-                                inline=False)
+                if cog_name != 'No Category':
+                    embed.add_field(name=cog_name,
+                                    value=f'{prefix}{cog_name}',
+                                    inline=False)
+
+        embed.set_thumbnail(
+            url="http://clipartmag.com/images/scroll-png-25.png")
+        embed.set_footer(
+            text=f"For specific parameters try {prefix}help [command/catagory]")
 
         channel = self.get_destination()
         await channel.send(embed=embed)
 
    # !help <command>
     async def send_command_help(self, command):
-        await self.context.send("This is help command")
+        embed = discord.Embed(title="Help",
+                              value=f"{command}, detailed.",
+                              color=embed_color)
+        embed.add_field(name='Usage',
+                        value=self.get_command_signature(command),
+                        inline=False)
 
+        embed.add_field(name='Desription',
+                        value=command.help,
+                        inline=False)
+
+        embed.add_field(name='Aliases',
+                        value=command.aliases,
+                        inline=False)
+
+        embed.set_thumbnail(
+            url="http://clipartmag.com/images/scroll-png-25.png")
+        embed.set_footer(
+            text=f"For specific parameters try {prefix}help [command/catagory]")
+
+        channel = self.get_destination()
+        await channel.send(embed=embed)
+        
    # !help <group>
     async def send_group_help(self, group):
         await self.context.send("This is help group")
