@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import error
+from error import embed_error
 
 
 prefix = 'ned '
@@ -86,7 +86,7 @@ class MyHelp(commands.HelpCommand):
 
     async def send_error_message(self, error):
         channel = self.get_destination()
-        await channel.send(embed=error.embed_error)
+        await channel.send(embed=embed_error)
 
 
 class help(commands.Cog, description='sends the help command'):
