@@ -24,7 +24,8 @@ class MyHelp(commands.HelpCommand):
                 text="For specific parameters try ned help [command/catagory]")
         await channel.send(embed=embed)
 
-    async def send_cog_help(self, ctx, cog):
+    async def send_cog_help(self, cog):
+        self.client
         embed = discord.Embed(
             title=f"Help: {cog}", color=0x00b3ff)
         for x in cog.commands:
@@ -55,13 +56,18 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 
 
+prefix = 'ned '
+
+
 class help(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-        help_command = MyHelp()
-        help_command.cog = self  # Instance of YourCog class
-        client.help_command = help_command
+    @commands.command()
+    async def help(self, ctx, mapping, input='catagories'):
+        '''shows this message. duh.'''
+        print(input)
+
 
 #https://gist.github.com/InterStella0/b78488fb28cadf279dfd3164b9f0cf96#start1
 #dude i legit could not do this without this tutorial bruhh

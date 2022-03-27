@@ -15,7 +15,7 @@ intents.members = True
 
 client = commands.Bot(command_prefix='ned ',
                       intents=intents)
-#client.remove_command('help')
+client.remove_command('help')
 
 
 @tasks.loop()
