@@ -4,10 +4,46 @@ from discord.ext import commands
 from random import randint, choice
 
 
+def igpay_atinlay(word):
+    return(word[1:]+word[0]+'AY')
+
+
+def pig_latin(sentence):
+    new_sentence = ''
+    a = 0
+    while sentence[a] != ' ':
+        a += 1
+
+    word = sentence[:a]
+    new_sentence += igpay_atinlay(word)
+    new_sentence += ' '
+
+    for x in range(len(sentence)-1):
+        if sentence[x] == ' ':
+            y = x+1
+            while y < len(sentence) and sentence[y] != ' ':
+                y += 1
+
+            word = (sentence[x+1:y])
+            new_sentence += igpay_atinlay(word)
+            new_sentence += ' '
+
+    return(new_sentence.upper())
+
+
 class fun(commands.Cog, description='funny, random, troll your friends sort of things'):
 
     def __init__(self, client):
         self.client = client
+
+    @commands.command()
+    async def pig_latin(self, ctx, *, sentence):
+        '''not quite functional command'''
+        embed = discord.Embed(
+            title="Igpay Atinlay",
+            description=igpay_atinlay(sentence)
+        )
+        await ctx.send(embed=embed)
 
     @commands.command(aliases=['8ball'])
     async def eightball(self, ctx, *, question):
