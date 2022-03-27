@@ -12,11 +12,13 @@ class MyHelp(commands.HelpCommand):
         embed = discord.Embed(title="Help",
                               description='List of Commands',
                               color=embed_color)
-        for cog in mapping.items():
-            cog_name = getattr(cog, "qualified_name", "No Category")
-            embed.add_field(name=cog_name,
-                            value=f'{prefix}{cog_name}',
-                            inline=False)
+        for cog, commands in mapping.items():
+            command_signatures = [self.get_command_signature(c) for c in commands]
+            if command_signatures:
+                cog_name = getattr(cog, "qualified_name", "No Category")
+                embed.add_field(name=cog_name,
+                                value=f'{prefix}{cog_name}',
+                                inline=False)
 
         channel = self.get_destination()
         await channel.send(embed=embed)
