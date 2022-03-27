@@ -9,9 +9,17 @@ embed_color = 0x00b3ff
 class MyHelp(commands.HelpCommand):
    # !help
     async def send_bot_help(self, mapping):
-        embed = discord.Embed(title="Help")
+        embed = discord.Embed(title="Help",
+                              description='List of Commands',
+                              color=embed_color)
         for cog in mapping.items():
             cog_name = getattr(cog, "qualified_name", "No Category")
+            embed.add_field(name=cog_name,
+                            value=f'{prefix}{cog_name}',
+                            inline=False)
+
+        channel = self.get_destination()
+        await channel.send(embed=embed)
 
    # !help <command>
     async def send_command_help(self, command):
@@ -31,7 +39,7 @@ class help(commands.Cog):
         self.client = client
         # Setting the cog for the help
         help_command = MyHelp()
-        help_command.cog = self # Instance of YourCog class
+        help_command.cog = self  # Instance of YourCog class
         client.help_command = help_command
 
 
