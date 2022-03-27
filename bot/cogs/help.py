@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+import error
+
 
 prefix = 'ned '
 embed_color = 0x00b3ff
@@ -81,6 +83,10 @@ class MyHelp(commands.HelpCommand):
 
         channel = self.get_destination()
         await channel.send(embed=embed)
+
+    async def send_error_message(self, error):
+        channel = self.get_destination()
+        await channel.send(embed=error.embed_error)
 
 
 class help(commands.Cog, description='sends the help command'):
