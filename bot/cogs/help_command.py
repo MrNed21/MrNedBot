@@ -91,7 +91,7 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 
 
-class help(commands.Cog, description='sends the help command'):
+class help_command(commands.Cog, description='sends the help command'):
     def __init__(self, client):
         self.client = client
         # Setting the cog for the help
@@ -105,4 +105,4 @@ class help(commands.Cog, description='sends the help command'):
 
 
 def setup(client):
-    client.add_cog(help(client))
+    client.add_cog(help_command(client))
