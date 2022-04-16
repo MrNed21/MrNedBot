@@ -21,7 +21,7 @@ class stock(commands.Cog, description='experimenting with stock stuff'):
             y=hist['Close'],
             mode='lines+markers'))
 
-        fig.write_image("graph.png")
+        fig.write_image(fig, "graph.png")
 
         embed = discord.Embed()
         embed.add_field(name=symbol, value="1 year history", inline=False)
