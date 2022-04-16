@@ -16,7 +16,7 @@ class stock(commands.Cog, description='experimenting with stock stuff'):
 
         data = yf.download(
             tickers=symbol,
-            period='365d',
+            period='60d',
             interval='15m',
             rounding=bool)
 
@@ -42,7 +42,7 @@ class stock(commands.Cog, description='experimenting with stock stuff'):
         fig.write_image("graph.png")
 
         embed = discord.Embed()
-        embed.add_field(name=symbol, value="1 year history", inline=False)
+        embed.add_field(name=symbol, value="60 day history", inline=False)
         file = discord.File(
             r"MrNedBot/bot/cogs/graph.png", filename="graph.png")
         embed.set_image(url="attachment://graph.png")
