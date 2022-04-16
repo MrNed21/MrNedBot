@@ -25,7 +25,7 @@ class stock(commands.Cog, description='experimenting with stock stuff'):
 
         embed = discord.Embed()
         embed.add_field(name=symbol, value="1 year history", inline=False)
-        file = discord.File(filename="graph.png")
+        file = discord.File("MrNedBot/bot/assets", filename="graph.png")
         embed.set_image(url="attachment://graph.png")
         await ctx.send(file=file, embed=embed)
 
