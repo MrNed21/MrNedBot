@@ -23,14 +23,15 @@ class stock(commands.Cog, description='experimenting with stock stuff'):
             mode='lines+markers'))
 
         pio.write_image(fig, "graph.png")
-
+        '''
         embed = discord.Embed()
         embed.add_field(name=symbol, value="1 year history", inline=False)
         file = discord.File(
             r"MrNedBot/bot/cogs/graph.png", filename="graph.png")
         embed.set_image(url="attachment://graph.png")
         await ctx.send(file=file, embed=embed)
-
+        '''
+        await ctx.send('this command is literally broken')
         #os.remove("graph.png")
 
 
