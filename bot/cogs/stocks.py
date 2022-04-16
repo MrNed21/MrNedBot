@@ -3,6 +3,7 @@ from discord.ext import commands
 import yfinance
 import plotly.graph_objects as go
 import os
+import kaleido
 
 
 class stock(commands.Cog, description='experimenting with stock stuff'):

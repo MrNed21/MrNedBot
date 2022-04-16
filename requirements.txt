@@ -9,3 +9,4 @@ dnspython
 datetime
 yfinance
 plotly
+kaleido
