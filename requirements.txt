@@ -8,4 +8,4 @@ PyNaCl
 dnspython
 datetime
 yfinance
-plotly.graph_objects
+plotly
