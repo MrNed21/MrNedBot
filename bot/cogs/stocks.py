@@ -33,11 +33,10 @@ class stocks(commands.Cog, description='bears and bulls and the wall street'):
 
     @commands.command()
     async def graph(self, ctx, ticker):
-        '''get graph of a stock'''
+        '''show a graph of a stock'''
         ticker = ticker.upper()
         save(ticker)
         file = discord.File(fp=f"{ticker}.png", filename=f"{ticker}.png")
-
         await ctx.send(file=file)
 
 
