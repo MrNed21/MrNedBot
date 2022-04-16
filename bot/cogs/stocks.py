@@ -40,7 +40,8 @@ class stocks(commands.Cog, description='bears and bulls and the wall street'):
             title=f'1 Year Stock Prices of {ticker}', description="from 2021 to 2022", color=0x00ff00)  # creates embed
         file = discord.File(fp=f"{ticker}.png", filename=f"{ticker}.png")
         embed.set_image(url="attachment://image.png")
-        await ctx.send(file=file, embed=embed)
+        await ctx.send(embed=embed)
+        os.remove(f'{ticker}.png')
 
 
 def setup(client):
