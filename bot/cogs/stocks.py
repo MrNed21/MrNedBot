@@ -17,7 +17,7 @@ def save(ticker):
     end = '2022-1-01'
     stock = yf.download(ticker, start, end)
 
-    stock['Open'].plot(label=ticker, figsize=(15, 7))
+    stock['Open'].plot(label=ticker, figsize=(30, 14))
 
     plt.title(f'1 Year Stock Prices of {ticker}')
 
@@ -37,10 +37,8 @@ class stocks(commands.Cog, description='bears and bulls and the wall street'):
         ticker = ticker.upper()
         save(ticker)
         file = discord.File(fp=f"{ticker}.png", filename=f"{ticker}.png")
-        embed = discord.Embed(
-            title=f'1 Year Stock Prices of {ticker}', description="from 2021 to 2022", color=0x00ff00)  # creates embed
-        embed.set_image(url="attachment://image.png")
-        await ctx.send(file=file, embed=embed)
+
+        await ctx.send(file=file)
 
 
 def setup(client):
