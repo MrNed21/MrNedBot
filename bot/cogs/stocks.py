@@ -21,15 +21,15 @@ class stock(commands.Cog, description='experimenting with stock stuff'):
             y=hist['Close'],
             mode='lines+markers'))
 
-        fig.write_image("graph.png", engine="kaleido")
+        fig.write_image("graph.png")
 
         embed = discord.Embed()
         embed.add_field(name=symbol, value="1 year history", inline=False)
         file = discord.File(filename="graph.png")
-        embed.set_image(url="attachment://image.png")
+        embed.set_image(url="attachment://graph.png")
         await ctx.send(file=file, embed=embed)
 
-        os.remove("graph.png")
+        #os.remove("graph.png")
 
 
 def setup(client):
