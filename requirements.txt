@@ -7,3 +7,5 @@ python-dotenv
 PyNaCl
 dnspython
 datetime
+yfinance
+plotly.graph_objects
