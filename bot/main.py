@@ -83,5 +83,6 @@ print('-------------------')
 print(f'{len(cogs_loaded)} cogs loaded')
 print()
 
-
-client.run(os.environ["DISCORD_TOKEN"])
+#for heroku
+#client.run(os.environ["DISCORD_TOKEN"])
+client.run('TOKEN')
