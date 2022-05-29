@@ -71,6 +71,14 @@ async def on_ready():
     print()
     print('-------------------')
 
+path = "/"
+dir_list = os.listdir(path)
+  
+print("Files and directories in '", path, "' :") 
+  
+# print the list
+print(dir_list)
+
 print('Loading Cogs...')
 
 cogs_loaded = []
