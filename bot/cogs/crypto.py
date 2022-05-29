@@ -1,7 +1,7 @@
 from discord.ext import commands
 import json
 import random
-file = r"data/nfts"
+file = r"/app/bot/data/nfts"
 data = open(file, 'r')
 nfts = []
 for x in data:
