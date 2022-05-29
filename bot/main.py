@@ -82,7 +82,7 @@ print(dir_list)
 print('Loading Cogs...')
 
 cogs_loaded = []
-for filename in os.listdir('./cogs'):
+for filename in os.listdir('/app/bot/cogs'):
     if filename.endswith('.py'):
         cogs_loaded.append(filename[:-3])
         client.load_extension(f'cogs.{filename[:-3]}')
